@@ -12,7 +12,7 @@ namespace WpfApplication1
 {
     // ENCAPSULATIE
 
-    class Balloon
+    public class Balloon
     {
         private int x = 10;
         private int y = 100;
@@ -24,8 +24,9 @@ namespace WpfApplication1
 
         public Balloon(Canvas canvas)
         {
+            
             diameter = rndGen.Next(10, 30);
-            x = rndGen.Next(10, 300);
+            x = rndGen.Next(10, (byte)slider1.Value);
             y = rndGen.Next(10, 200);
 
             UpdateEllipse(canvas);
@@ -34,8 +35,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 1000);
-            y = rndGen.Next(10, 1000);
+            x = rndGen.Next(10, 2000);
+            y = rndGen.Next(10, 2000);
 
             UpdateEllipse(canvas);
         }
@@ -43,8 +44,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter, int height)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10,1000);
-            y = rndGen.Next(10, 1000);
+            x = rndGen.Next(10, 2000);
+            y = rndGen.Next(10, 2000);
 
             UpdateEllipse(canvas);
         }

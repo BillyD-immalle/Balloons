@@ -34,8 +34,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 300);
-            y = rndGen.Next(10, 200);
+            x = rndGen.Next(10, 1000);
+            y = rndGen.Next(10, 1000);
 
             UpdateEllipse(canvas);
         }
@@ -43,8 +43,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter, int height)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 300);
-            y = height;
+            x = rndGen.Next(10,1000);
+            y = rndGen.Next(10, 1000);
 
             UpdateEllipse(canvas);
         }
@@ -55,6 +55,8 @@ namespace WpfApplication1
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
             ellipse.Stroke = new SolidColorBrush(Colors.Red);
+            ellipse.StrokeThickness = 20;
+            ellipse.Fill = new SolidColorBrush(Colors.White);
             canvas.Children.Add(ellipse);
         }
 

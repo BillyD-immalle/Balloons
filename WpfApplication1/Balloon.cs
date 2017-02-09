@@ -18,8 +18,13 @@ namespace WpfApplication1
         private int y = 100;
         private int diameter = 10;
 
+        private int f = 10;
+
+
+
         Ellipse ellipse = new Ellipse();
         TextBlock text = new TextBlock();
+        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
 
         static Random rndGen = new Random();
         
@@ -27,9 +32,9 @@ namespace WpfApplication1
         public Balloon(Canvas canvas)
         {
             
-            diameter = rndGen.Next(10, 30);
-            x = rndGen.Next(10, 2000);
-            y = rndGen.Next(10, 2000);
+            diameter = rndGen.Next(10, 50);
+            x = rndGen.Next(5, 2000);
+            y = rndGen.Next(5, 2000);
 
 
 
@@ -39,8 +44,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 2000);
-            y = rndGen.Next(10, 2000);
+            x = rndGen.Next(5, 2000);
+            y = rndGen.Next(5, 2000);
 
             UpdateEllipse(canvas);
         }
@@ -48,8 +53,8 @@ namespace WpfApplication1
         public Balloon(Canvas canvas, int diameter, int height)
         {
             this.diameter = diameter;
-            x = rndGen.Next(10, 2000);
-            y = rndGen.Next(10, 2000);
+            x = rndGen.Next(5, 2000);
+            y = rndGen.Next(5, 2000);
 
             UpdateEllipse(canvas);
         }
@@ -59,16 +64,20 @@ namespace WpfApplication1
             ellipse.Width = diameter;
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
-            ellipse.Stroke = new SolidColorBrush(Colors.Red);
-            ellipse.StrokeThickness = 1;
-            ellipse.Fill = new SolidColorBrush(Colors.White);
+            ellipse.Stroke = new SolidColorBrush(Colors.CornflowerBlue);
+            ellipse.StrokeThickness = 5;
+            ellipse.Fill = bgBrush;
 
-            text.Text = "Ik ben een cirkel";
-            text.Margin = new Thickness(x, y, 100, 50);
+            text.Text = "cirkel";
+            text.Margin = new Thickness(x+diameter/4, y + diameter / 4, 0, 0);
+            text.Foreground = new SolidColorBrush(Colors.White);
+            text.FontFamily = new FontFamily("Bauhaus 93");
+            text.FontSize = f;
 
             canvas.Children.Add(ellipse);
             canvas.Children.Add(text);
         }
+
 
         public void Grow()
         {
@@ -76,8 +85,11 @@ namespace WpfApplication1
             ellipse.Width = diameter;
             ellipse.Height = diameter;
 
-            text.Width = diameter;
-            text.Height = diameter;
+            text.Width = diameter / 2;
+            text.Height = diameter / 2;
+            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
+            text.FontSize = f+10;
+
         }
 
         public void Move()
@@ -85,7 +97,7 @@ namespace WpfApplication1
             y -= 10;
             ellipse.Margin = new Thickness(x, y, 0, 0);
 
-            text.Margin = new Thickness(x, y, 0, 0);
+            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
         }
 
     }

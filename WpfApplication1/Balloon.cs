@@ -68,7 +68,7 @@ namespace WpfApplication1
             ellipse.StrokeThickness = 2;
             ellipse.Fill = bgBrush;
 
-            text.Text = "cirkel";
+            text.Text = "Happy bday Loes!!!";
             text.Margin = new Thickness(x+diameter/4, y + diameter / 4, 0, 0);
             text.Foreground = new SolidColorBrush(Colors.Black);
             text.FontFamily = new FontFamily("Bauhaus 93");
@@ -88,7 +88,7 @@ namespace WpfApplication1
             text.Width = diameter / 2;
             text.Height = diameter / 2;
             text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
-            text.FontSize = f+10;
+            text.FontSize = f + 20;
 
         }
 

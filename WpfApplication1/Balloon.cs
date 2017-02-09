@@ -19,15 +19,19 @@ namespace WpfApplication1
         private int diameter = 10;
 
         Ellipse ellipse = new Ellipse();
+        TextBlock text = new TextBlock();
 
         static Random rndGen = new Random();
+        
 
         public Balloon(Canvas canvas)
         {
             
             diameter = rndGen.Next(10, 30);
-            x = rndGen.Next(10, (byte)slider1.Value);
-            y = rndGen.Next(10, 200);
+            x = rndGen.Next(10, 2000);
+            y = rndGen.Next(10, 2000);
+
+
 
             UpdateEllipse(canvas);
         }
@@ -56,9 +60,14 @@ namespace WpfApplication1
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
             ellipse.Stroke = new SolidColorBrush(Colors.Red);
-            ellipse.StrokeThickness = 20;
+            ellipse.StrokeThickness = 1;
             ellipse.Fill = new SolidColorBrush(Colors.White);
+
+            text.Text = "Ik ben een cirkel";
+            text.Margin = new Thickness(x, y, 100, 50);
+
             canvas.Children.Add(ellipse);
+            canvas.Children.Add(text);
         }
 
         public void Grow()
@@ -66,12 +75,17 @@ namespace WpfApplication1
             diameter += 10;
             ellipse.Width = diameter;
             ellipse.Height = diameter;
+
+            text.Width = diameter;
+            text.Height = diameter;
         }
 
         public void Move()
         {
             y -= 10;
             ellipse.Margin = new Thickness(x, y, 0, 0);
+
+            text.Margin = new Thickness(x, y, 0, 0);
         }
 
     }

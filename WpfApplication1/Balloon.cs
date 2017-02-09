@@ -24,7 +24,7 @@ namespace WpfApplication1
 
         Ellipse ellipse = new Ellipse();
         TextBlock text = new TextBlock();
-        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
+        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Black, 90);
 
         static Random rndGen = new Random();
         
@@ -64,20 +64,20 @@ namespace WpfApplication1
             ellipse.Width = diameter;
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
-            ellipse.Stroke = new SolidColorBrush(Colors.CornflowerBlue);
-            ellipse.StrokeThickness = 5;
+            ellipse.Stroke = new SolidColorBrush(Colors.Black);
+            ellipse.StrokeThickness = 2;
             ellipse.Fill = bgBrush;
 
             text.Text = "cirkel";
             text.Margin = new Thickness(x+diameter/4, y + diameter / 4, 0, 0);
-            text.Foreground = new SolidColorBrush(Colors.White);
+            text.Foreground = new SolidColorBrush(Colors.Black);
             text.FontFamily = new FontFamily("Bauhaus 93");
-            text.FontSize = f;
+            text.FontSize = 1;
 
             canvas.Children.Add(ellipse);
             canvas.Children.Add(text);
         }
-
+         
 
         public void Grow()
         {

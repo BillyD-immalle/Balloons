@@ -26,7 +26,7 @@ namespace WpfApplication1
         {
             InitializeComponent();
 
-            for(var i = 0; i<500; i++)
+            for(var i = 0; i<1000; i++)
             {
                 Balloon newBalloon = new Balloon(canvas, 20, 100);
                 balloons.Add(newBalloon);
@@ -52,7 +52,7 @@ namespace WpfApplication1
         private void initButton_Click(object sender, RoutedEventArgs e)
         {
             canvas.Children.Clear();
-            for (var i = 0; i < 500; i++)
+            for (var i = 0; i < 1000; i++)
             {
                 Balloon newBalloon = new Balloon(canvas, 20, 100);
                 balloons.Add(newBalloon);

@@ -14,7 +14,6 @@ namespace WpfApplication1
 
     class Balloon
     {
-        // First we define the PRIVATE parts of the Balloon.
 
         private int x = 10;
         private int y = 10;
@@ -27,10 +26,6 @@ namespace WpfApplication1
         Brush strokeBrush = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
         Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
 
-        /*
-         * This method uses the class variables x, y and diameter
-         * to update the WPF-controls included in this class.
-         */
         private void UpdateBalloon()
         {
             ellipse.Width = diameter;
@@ -41,18 +36,9 @@ namespace WpfApplication1
         }
 
 
-        // BELOW this point, you will find the PUBLIC interface to the Balloon
-
-        /*
-         * This constructor uses another constructor to specify default values for
-         * height and xpos.
-         */
         public Balloon(Canvas canvas, int diameter) : this(canvas, diameter, 10, 10)
         { }
 
-        /*
-         * This constructor allows choosing the diameter, height and xpos of the balloon
-         */
         public Balloon(Canvas canvas, int diameter, int height, int xpos)
         {
             this.diameter = diameter;

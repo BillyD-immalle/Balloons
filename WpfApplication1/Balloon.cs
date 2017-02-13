@@ -19,10 +19,13 @@ namespace WpfApplication1
         private int y = 10;
         private int diameter = 10;
 
+        private int f = 10;
+
         const int growAmount = 10;
         const int moveAmount = 10;
 
         Ellipse ellipse = new Ellipse();
+        TextBlock text = new TextBlock();
         Brush strokeBrush = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
         Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
 
@@ -33,6 +36,12 @@ namespace WpfApplication1
             ellipse.Margin = new Thickness(x, y, 0, 0);
             ellipse.Stroke = strokeBrush;
             ellipse.Fill = bgBrush;
+
+            text.Text = "cirkel";
+            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
+            text.Foreground = new SolidColorBrush(Colors.White);
+            text.FontFamily = new FontFamily("Calibri");
+            text.FontSize = f;
         }
 
 
@@ -47,6 +56,7 @@ namespace WpfApplication1
 
             UpdateBalloon();
             canvas.Children.Add(ellipse);
+            canvas.Children.Add(text);
         }
 
         public void Grow()
@@ -54,12 +64,19 @@ namespace WpfApplication1
             diameter += growAmount;
             ellipse.Width = diameter;
             ellipse.Height = diameter;
+
+            text.Width = diameter / 2;
+            text.Height = diameter / 2;
+            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
+            text.FontSize = f + 20;
         }
 
         public void Move()
         {
             y -= moveAmount;
             ellipse.Margin = new Thickness(x, y, 0, 0);
+
+            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
         }
 
         public Brush Background

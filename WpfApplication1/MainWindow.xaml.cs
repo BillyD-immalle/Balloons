@@ -23,6 +23,9 @@ namespace WpfApplication1
         static Random rndGen = new Random();
         List<Balloon> balloons = new List<Balloon>();
         Brush bgBrush2 = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
+        Brush bgBrush3 = new LinearGradientBrush(Colors.Green, Colors.White, 90);
+        Brush bgBrush4 = new LinearGradientBrush(Colors.White, Colors.Green, 90);
+        Brush bgBrush5 = new LinearGradientBrush(Colors.Yellow, Colors.White, 90);
 
         public MainWindow()
         {
@@ -45,6 +48,16 @@ namespace WpfApplication1
                 if (i % 3 == 0)
                 {
                     newBalloon.Background = bgBrush2;
+                }
+
+                if (i % 5 == 0)
+                {
+                    newBalloon.Background = bgBrush3;
+                }
+
+                if (i % 2 == 0)
+                {
+                    newBalloon.Background = bgBrush4;
                 }
 
                 balloons.Add(newBalloon);

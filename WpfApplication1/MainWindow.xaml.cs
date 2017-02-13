@@ -22,10 +22,10 @@ namespace WpfApplication1
     {
         static Random rndGen = new Random();
         List<Balloon> balloons = new List<Balloon>();
-        Brush bgBrush2 = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
-        Brush bgBrush3 = new LinearGradientBrush(Colors.Green, Colors.White, 90);
-        Brush bgBrush4 = new LinearGradientBrush(Colors.White, Colors.Green, 90);
-        Brush bgBrush5 = new LinearGradientBrush(Colors.Yellow, Colors.White, 90);
+        Brush bgBrush2 = new LinearGradientBrush(Colors.Yellow, Colors.DarkOrange, 90);
+        Brush bgBrush3 = new LinearGradientBrush(Colors.Green, Colors.DarkSeaGreen, 90);
+        Brush bgBrush4 = new LinearGradientBrush(Colors.Blue, Colors.DarkBlue, 90);
+        Brush bgBrush5 = new LinearGradientBrush(Colors.Yellow, Colors.Beige, 90);
 
         public MainWindow()
         {

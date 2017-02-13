@@ -26,22 +26,21 @@ namespace WpfApplication1
 
         Ellipse ellipse = new Ellipse();
         TextBlock text = new TextBlock();
-        Brush strokeBrush = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
-        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
+ 
+        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.DarkRed, 90);
 
         private void UpdateBalloon()
         {
             ellipse.Width = diameter;
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
-            ellipse.Stroke = strokeBrush;
             ellipse.Fill = bgBrush;
 
-            text.Text = "cirkel";
-            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
-            text.Foreground = new SolidColorBrush(Colors.White);
-            text.FontFamily = new FontFamily("Calibri");
-            text.FontSize = f;
+            //text.Text = "cirkel";
+            //text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
+            //text.Foreground = new SolidColorBrush(Colors.White);
+            //text.FontFamily = new FontFamily("Calibri");
+            //text.FontSize = f;
         }
 
 

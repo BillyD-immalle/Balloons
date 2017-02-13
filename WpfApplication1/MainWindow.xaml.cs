@@ -20,22 +20,45 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
+        static Random rndGen = new Random();
         List<Balloon> balloons = new List<Balloon>();
+        Brush bgBrush2 = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
 
         public MainWindow()
         {
             InitializeComponent();
+            InitializeBalloons();
+        }
 
-            for(var i = 0; i<1000; i++)
+        private void InitializeBalloons()
+        {
+            canvas.Children.Clear();
+            balloons.Clear();
+            for (var i = 0; i < 1000; i++)
             {
-                Balloon newBalloon = new Balloon(canvas, 20, 100);
+                Balloon newBalloon = new Balloon(canvas,
+                        rndGen.Next(10, 50),
+                        rndGen.Next(1080),
+                        rndGen.Next(1920)
+                    );
+
+                if (i % 3 == 0)
+                {
+                    newBalloon.Background = bgBrush2;
+                }
+
                 balloons.Add(newBalloon);
             }
         }
 
+        private void initButton_Click(object sender, RoutedEventArgs e)
+        {
+            InitializeBalloons();
+        }
+
         private void growButton_Click(object sender, RoutedEventArgs e)
         {
-            foreach(var b in balloons)
+            foreach (var b in balloons)
             {
                 b.Grow();
             }
@@ -48,15 +71,6 @@ namespace WpfApplication1
                 b.Move();
             }
         }
-
-        private void initButton_Click(object sender, RoutedEventArgs e)
-        {
-            canvas.Children.Clear();
-            for (var i = 0; i < 1000; i++)
-            {
-                Balloon newBalloon = new Balloon(canvas, 20, 100);
-                balloons.Add(newBalloon);
-            }
-        }
     }
 }
+

@@ -12,93 +12,81 @@ namespace WpfApplication1
 {
     // ENCAPSULATIE
 
-    public class Balloon
+    class Balloon
     {
+        // First we define the PRIVATE parts of the Balloon.
+
         private int x = 10;
-        private int y = 100;
+        private int y = 10;
         private int diameter = 10;
 
-        private int f = 10;
-
-
+        const int growAmount = 10;
+        const int moveAmount = 10;
 
         Ellipse ellipse = new Ellipse();
-        TextBlock text = new TextBlock();
-        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Black, 90);
+        Brush strokeBrush = new LinearGradientBrush(Colors.Pink, Colors.Red, 90);
+        Brush bgBrush = new LinearGradientBrush(Colors.Red, Colors.Pink, 90);
 
-        static Random rndGen = new Random();
-        
-
-        public Balloon(Canvas canvas)
-        {
-            
-            diameter = rndGen.Next(10, 50);
-            x = rndGen.Next(5, 2000);
-            y = rndGen.Next(5, 2000);
-
-
-
-            UpdateEllipse(canvas);
-        }
-
-        public Balloon(Canvas canvas, int diameter)
-        {
-            this.diameter = diameter;
-            x = rndGen.Next(5, 2000);
-            y = rndGen.Next(5, 2000);
-
-            UpdateEllipse(canvas);
-        }
-
-        public Balloon(Canvas canvas, int diameter, int height)
-        {
-            this.diameter = diameter;
-            x = rndGen.Next(5, 2000);
-            y = rndGen.Next(5, 2000);
-
-            UpdateEllipse(canvas);
-        }
-
-        void UpdateEllipse(Canvas canvas)
+        /*
+         * This method uses the class variables x, y and diameter
+         * to update the WPF-controls included in this class.
+         */
+        private void UpdateBalloon()
         {
             ellipse.Width = diameter;
             ellipse.Height = diameter;
             ellipse.Margin = new Thickness(x, y, 0, 0);
-            ellipse.Stroke = new SolidColorBrush(Colors.Black);
-            ellipse.StrokeThickness = 2;
+            ellipse.Stroke = strokeBrush;
             ellipse.Fill = bgBrush;
-
-            text.Text = "Happy bday Loes!!!";
-            text.Margin = new Thickness(x+diameter/4, y + diameter / 4, 0, 0);
-            text.Foreground = new SolidColorBrush(Colors.Black);
-            text.FontFamily = new FontFamily("Bauhaus 93");
-            text.FontSize = 1;
-
-            canvas.Children.Add(ellipse);
-            canvas.Children.Add(text);
         }
-         
+
+
+        // BELOW this point, you will find the PUBLIC interface to the Balloon
+
+        /*
+         * This constructor uses another constructor to specify default values for
+         * height and xpos.
+         */
+        public Balloon(Canvas canvas, int diameter) : this(canvas, diameter, 10, 10)
+        { }
+
+        /*
+         * This constructor allows choosing the diameter, height and xpos of the balloon
+         */
+        public Balloon(Canvas canvas, int diameter, int height, int xpos)
+        {
+            this.diameter = diameter;
+            x = xpos;
+            y = height;
+
+            UpdateBalloon();
+            canvas.Children.Add(ellipse);
+        }
 
         public void Grow()
         {
-            diameter += 10;
+            diameter += growAmount;
             ellipse.Width = diameter;
             ellipse.Height = diameter;
-
-            text.Width = diameter / 2;
-            text.Height = diameter / 2;
-            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
-            text.FontSize = f + 20;
-
         }
 
         public void Move()
         {
-            y -= 10;
+            y -= moveAmount;
             ellipse.Margin = new Thickness(x, y, 0, 0);
-
-            text.Margin = new Thickness(x + diameter / 4, y + diameter / 4, 0, 0);
         }
 
+        public Brush Background
+        {
+            get
+            {
+                return bgBrush;
+            }
+            set
+            {
+                bgBrush = value;
+                UpdateBalloon();
+            }
+        }
     }
 }
